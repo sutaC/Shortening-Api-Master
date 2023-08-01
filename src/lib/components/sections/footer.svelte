@@ -1,5 +1,5 @@
 <footer>
-	<img src="/images/logo.svg" alt="logo" />
+	<h2>Shortly</h2>
 
 	<ul>
 		<h3>Features</h3>
@@ -36,3 +36,40 @@
 		>
 	</div>
 </footer>
+
+<style>
+	footer {
+		padding: 2em;
+
+		text-align: center;
+		color: white;
+		background-color: var(--clr-neutral-dViolet);
+	}
+
+	h2 {
+		font-size: 2rem;
+	}
+
+	ul {
+		list-style: none;
+		padding: 0;
+		font-size: 0.75rem;
+	}
+
+	h3 {
+		margin: 2.25em 0 1em;
+	}
+
+	li {
+		color: var(--clr-neutral-gViolet);
+		margin: 0.5em 0;
+	}
+
+	.social {
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		max-width: 70%;
+		margin: 3em auto 0;
+	}
+</style>
