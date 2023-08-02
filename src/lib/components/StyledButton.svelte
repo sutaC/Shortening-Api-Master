@@ -13,7 +13,17 @@
 		border: none;
 		color: white;
 
-		padding: 0.75em 2em;
+		width: 100%;
+		padding: 0.6em 2em;
+
+		&:hover,
+		&:focus {
+			background-color: color-mix(in srgb, var(--clr-primary-cyan) 90%, white 100%);
+		}
+		&:active,
+		&:disabled {
+			background-color: var(--clr-primary-violet);
+		}
 	}
 
 	.rounded {
@@ -23,7 +33,6 @@
 
 	.angular {
 		font-size: 0.9rem;
-		width: 100%;
 		border-radius: 10px;
 	}
 </style>

@@ -33,6 +33,10 @@
 		--clr-neutral-dViolet: hsl(260, 8%, 14%);
 
 		--site-padding: 1rem;
+
+		@media (width >= 1000px) {
+			--site-padding: 10%;
+		}
 	}
 
 	:global(*) {
@@ -43,6 +47,7 @@
 	:global(html) {
 		font-size: 18px;
 		color: var(--clr-neutral-dBlue);
+		scroll-behavior: smooth;
 	}
 
 	:global(body) {

@@ -32,6 +32,55 @@
 	section {
 		text-align: center;
 		padding: 0 var(--site-padding);
+
+		& > h2 {
+			@media (width >= 1000px) {
+				font-size: 2rem;
+			}
+		}
+
+		& > p {
+			max-width: 50ch;
+			margin: auto;
+		}
+	}
+
+	.stats-container {
+		position: relative;
+		height: 100%;
+
+		@media (width >= 1000px) {
+			margin-bottom: 2em;
+
+			display: flex;
+			justify-content: space-between;
+			align-items: baseline;
+			gap: 2em;
+		}
+
+		& .line {
+			content: '';
+			display: block;
+
+			width: 0.5rem;
+			height: 100%;
+			background-color: var(--clr-primary-cyan);
+			z-index: -1;
+
+			position: absolute;
+			top: 0;
+			left: 50%;
+			translate: -50% 0;
+
+			@media (width >= 1000px) {
+				width: 100%;
+				height: 0.5rem;
+
+				left: 0;
+				top: 50%;
+				translate: 0 -50%;
+			}
+		}
 	}
 
 	.stats {
@@ -42,44 +91,40 @@
 		margin: 4em 0;
 		padding: 2em;
 		padding-top: 3em;
-	}
-	.stats::after {
-		content: var(--_icon);
 
-		width: 25%;
-		max-width: 4.5rem;
-		aspect-ratio: 1;
+		&::after {
+			content: var(--_icon);
 
-		background-color: var(--clr-primary-violet);
-		border-radius: 100%;
+			width: 25%;
+			max-width: 4.5rem;
+			aspect-ratio: 1;
 
-		position: absolute;
-		left: 50%;
-		top: 0;
-		translate: -50% -40%;
+			background-color: var(--clr-primary-violet);
+			border-radius: 100%;
 
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
+			position: absolute;
+			left: 50%;
+			top: 0;
+			translate: -50% -40%;
 
-	.stats-container {
-		position: relative;
-		height: 100%;
-	}
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
 
-	.stats-container .line {
-		content: '';
-		display: block;
+		@media (width >= 1000px) {
+			text-align: left;
 
-		width: 0.5rem;
-		height: 100%;
-		background-color: var(--clr-primary-cyan);
-		z-index: -1;
+			&:nth-child(2) {
+				translate: 0 10%;
+			}
+			&:nth-child(3) {
+				translate: 0 20%;
+			}
 
-		position: absolute;
-		top: 0;
-		left: 50%;
-		translate: -50% 0;
+			&::after {
+				left: 20%;
+			}
+		}
 	}
 </style>
