@@ -8,7 +8,7 @@
 	<img src="/images/logo.svg" alt="Logo" class="logo" />
 
 	<!-- Mobile -->
-	<button class="hamburger" on:click={() => modal.showModal()}>
+	<button class="hamburger" aria-label="open navigation" on:click={() => modal.showModal()}>
 		<span /><span /><span />
 	</button>
 	<!-- svelte-ignore a11y-click-events-have-key-events -->

@@ -3,19 +3,19 @@
 
 	<div class="description">
 		<ul>
-			<h3>Features</h3>
+			<li><h3>Features</h3></li>
 			<li><a href="/">Link Shortening</a></li>
 			<li><a href="/">Branded Links</a></li>
 			<li><a href="/">Analytics</a></li>
 		</ul>
 		<ul>
-			<h3>Resources</h3>
+			<li><h3>Resources</h3></li>
 			<li><a href="/">Blog</a></li>
 			<li><a href="/">Developers</a></li>
 			<li><a href="/">Support</a></li>
 		</ul>
 		<ul>
-			<h3>Company</h3>
+			<li><h3>Company</h3></li>
 			<li><a href="/">About</a></li>
 			<li><a href="/">Our Team</a></li>
 			<li><a href="/">Careers</a></li>
