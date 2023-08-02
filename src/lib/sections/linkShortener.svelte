@@ -1,6 +1,10 @@
 <script lang="ts">
 	import StyledButton from '$lib/components/StyledButton.svelte';
 	import { links } from '$lib/stores/links';
+	import { fade, fly } from 'svelte/transition';
+
+	let link = '';
+	let error = '';
 
 	const copyLink = (newLink: string) => {
 		// Copy link
@@ -19,13 +23,43 @@
 			);
 		}
 	};
+
+	const shortenLink = async () => {
+		error = '';
+		if (link.length === 0) {
+			error = 'Please add a link';
+			return;
+		}
+
+		const res = await fetch(`https://api.shrtco.de/v2/shorten?url=${link}`);
+		const data = await res.json();
+
+		if (data.ok) {
+			const newLink = {
+				old: link,
+				new: data.result.full_short_link,
+				copied: false
+			};
+			links.update((ls) => [newLink, ...ls]);
+		} else {
+			error = data.error;
+		}
+
+		link = '';
+	};
 </script>
 
 <section aria-label="Link Shortener">
-	<form>
+	<form on:submit|preventDefault={shortenLink}>
 		<div class="field">
-			<input type="text" name="link" id="link" placeholder="Shorten a link here..." />
-			<label for="link" class="error">XxX</label>
+			<input
+				type="text"
+				name="link"
+				id="link"
+				placeholder="Shorten a link here..."
+				bind:value={link}
+			/>
+			<label for="link" class="error" class:error-active={error}>{error}</label>
 		</div>
 		<div class="button-container">
 			<StyledButton style="angular">Shorten&nbsp;It!</StyledButton>
@@ -34,10 +68,12 @@
 
 	<ul>
 		{#each $links as link (link.new)}
-			<li>
+			<li in:fly={{ y: -75, duration: 700 }} out:fly={{ y: 75, duration: 900 }}>
 				<p class="oldLink">{link.old}</p>
 				<div>
-					<a href="//" class="newLink">{link.new}</a>
+					<a href={link.new} target="_blank" rel="noopener noreferrer" class="newLink">
+						{link.new}
+					</a>
 					<div class="button-container">
 						<StyledButton
 							style="angular"

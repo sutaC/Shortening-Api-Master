@@ -25,7 +25,7 @@ if (browser) {
 links.subscribe((ls) => {
 	if (ls.length > 3) {
 		let newLinkList = ls;
-		newLinkList.pop();
+		newLinkList.splice(ls.length - 1, 1);
 		links.set(newLinkList);
 	}
 });

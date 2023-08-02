@@ -1,5 +1,5 @@
 <script lang="ts">
-	import StyledButton from '../StyledButton.svelte';
+	import StyledButton from '$lib/components/StyledButton.svelte';
 
 	let modal: HTMLDialogElement;
 </script>
