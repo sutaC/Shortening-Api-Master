@@ -1,5 +1,24 @@
-<script>
+<script lang="ts">
 	import StyledButton from '$lib/components/StyledButton.svelte';
+	import { links } from '$lib/stores/links';
+
+	const copyLink = (newLink: string) => {
+		// Copy link
+		navigator.clipboard.writeText(newLink);
+
+		// Change state of button
+		const newListElement = $links.find((li) => li.new === newLink);
+		if (newListElement && !newListElement.copied) {
+			links.update((ls) =>
+				ls.map((li) => {
+					if (li.new === newLink) {
+						li.copied = true;
+					}
+					return li;
+				})
+			);
+		}
+	};
 </script>
 
 <section aria-label="Link Shortener">
@@ -14,33 +33,23 @@
 	</form>
 
 	<ul>
-		<li>
-			<p class="oldLink">Lorem ipsum dolor sit amet.</p>
-			<div>
-				<a href="//" class="newLink">Lorem, ipsum dolor.</a>
-				<div class="button-container">
-					<StyledButton style="angular">Copy</StyledButton>
+		{#each $links as link (link.new)}
+			<li>
+				<p class="oldLink">{link.old}</p>
+				<div>
+					<a href="//" class="newLink">{link.new}</a>
+					<div class="button-container">
+						<StyledButton
+							style="angular"
+							color={link.copied ? 'violet' : 'cyan'}
+							on:click={() => copyLink(link.new)}
+						>
+							{link.copied ? 'Copied!' : 'Copy'}
+						</StyledButton>
+					</div>
 				</div>
-			</div>
-		</li>
-		<li>
-			<p class="oldLink">Quasi rem facilis delectus commodi.</p>
-			<div>
-				<a href="//" class="newLink">Rerum, odit repellat!</a>
-				<div class="button-container">
-					<StyledButton style="angular">Copy</StyledButton>
-				</div>
-			</div>
-		</li>
-		<li>
-			<p class="oldLink">Totam beatae numquam cumque ut.</p>
-			<div>
-				<a href="//" class="newLink">Tempora, doloremque nam?</a>
-				<div class="button-container">
-					<StyledButton style="angular">Copy</StyledButton>
-				</div>
-			</div>
-		</li>
+			</li>
+		{/each}
 	</ul>
 </section>
 
@@ -117,6 +126,12 @@
 		list-style: none;
 		padding: 0;
 		margin: var(--_section-padding) 0;
+
+		& .button-container {
+			@media (width >= 1000px) {
+				width: 7rem;
+			}
+		}
 	}
 
 	li {
