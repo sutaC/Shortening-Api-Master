@@ -19,6 +19,17 @@
 
 <Footer />
 
+<div class="attribution">
+	Challenge by
+	<a href="https://www.frontendmentor.io?ref=challenge" target="_blank" rel="noopener noreferrer">
+		Frontend Mentor
+	</a>
+	. Coded by
+	<a href="https://www.frontendmentor.io/profile/sutaC" target="_blank" rel="noopener noreferrer">
+		Catus
+	</a>.
+</div>
+
 <style>
 	/* Global */
 	@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap');
@@ -59,5 +70,15 @@
 
 	:global(p) {
 		color: var(--clr-neutral-gViolet);
+	}
+
+	/* Attribution */
+	.attribution {
+		width: 100%;
+		position: fixed;
+		left: 0;
+		bottom: 0;
+		font-size: 0.5rem;
+		text-align: center;
 	}
 </style>
